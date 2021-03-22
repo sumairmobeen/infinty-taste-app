@@ -84,7 +84,7 @@ export default function Basket() {
                                             <div class="col-md-5 col-lg-3 col-xl-3">
                                                 <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                                                     <img class="img-fluid w-100"
-                                                        src={e.productimages[0]} alt="Sample" />
+                                                        src={e.productimages} alt="Sample" />
                                                     <a href="">
                                                         <div class="mask">
                                                             <img class="img-fluid w-100"

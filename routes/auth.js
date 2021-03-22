@@ -1,7 +1,7 @@
 var express = require("express");
 var bcrypt = require("bcrypt-inzi")
-var jwt = require('jsonwebtoken'); 
-var { userModel, otpModel } = require("../dbrepo/models"); 
+var jwt = require('jsonwebtoken');
+var { userModel, otpModel } = require("../dbrepo/models");
 var { SERVER_SECRET } = require("../core/index");
 var api = express.Router();
 
@@ -109,74 +109,70 @@ api.post("/validemail", (req, res, next) => {
 api.post("/login", (req, res, next) => {
 
     if (!req.body.email || !req.body.password) {
-        res.send({
-            message: `please send email and passwod in json body.
+
+        res.status(403).send(`
+            please send email and passwod in json body.
             e.g:
             {
                 "email": "mobeengrs786@gmail.com",
                 "password": "1234",
-            }`,
-            status: 403
-        });
-        return
+            }`)
+        return;
     }
-    userModel.findOne({ email: req.body.email }, function (err, user) {
-        if (err) {
-            res.send({
-                message: "An Error Occure :" + JSON.stringify(err),
-                status: 500
-            });
-        }
-        else if (user) {
-            bcrypt.varifyHash(req.body.password, user.password).then(isMatched => {
-                if (isMatched) {
-                    console.log("Matched");
 
-                    var token = jwt.sign({
-                        id: user._id,
-                        name: user.name,
-                        email: user.email,
-                        phone: user.phone,
-                        role: user.role
-                    }, SERVER_SECRET);
+    userModel.findOne({ email: req.body.email },
+        function (err, user) {
+            if (err) {
+                res.status(500).send({
+                    message: "an error occured: " + JSON.stringify(err)
+                });
+            } else if (user) {
+                bcrypt.varifyHash(req.body.password, user.password).then(isMatched => {
+                    if (isMatched) {
+                        console.log("matched", user);
 
-                    res.cookie('jToken', token, {
-                        maxAge: 86_400_000,
-                        httpOnly: true
-                    });
+                        var token =
+                            jwt.sign({
+                                id: user._id,
+                                name: user.name,
+                                email: user.email,
+                                role: user.role
+                            }, SERVER_SECRET)
 
-                    
+                        res.cookie('jToken', token, {
+                            maxAge: 86400000,
+                            httpOnly: true
+                        });
+
+                        res.send({
+                            status: 200,
+                            message: "login success",
+                            user: {
+                                name: user.name,
+                                email: user.email,
+                                phone: user.phone,
+                                gender: user.gender,
+                                role: user.role
+                            }
+                        });
 
 
-                    res.send({
-                        status: 200,
-                        token: token,
-                        message: "Login Success",
-                        user: {
-                            name: user.name,
-                            email: user.email,
-                            phone: user.phone,
-                            role: user.role
-                        }
-                    });
+                    } else {
+                        console.log("not matched");
+                        res.send({
+                            message: "Incorrect password or email"
+                        })
+                    }
+                }).catch(e => {
+                    console.log("error: ", e)
+                })
 
-                } else {
-                    console.log("not matched");
-                    res.send({
-                        message: "Wrong Password",
-                        status: 401
-                    })
-                }
-            }).catch(e => {
-                console.log("error: ", e)
-            });
-        } else {
-            res.send({
-                message: "User NOT Found",
-                status: 403
-            });
-        }
-    });
+            } else {
+                res.send({
+                    message: "user not found"
+                });
+            }
+        });
 });
 
 api.post("/logout", (req, res, next) => {

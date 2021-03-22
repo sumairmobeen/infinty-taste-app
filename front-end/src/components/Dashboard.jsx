@@ -80,10 +80,9 @@ function Dashboard() {
           <h1 className="text-center mt-1">Products</h1>
           <div className="row">
             {produt.map((e, index) => (
-
               <div className="col-md-3 mt-3" key={index}>
                 <div style={{ textAlign: 'center' }}>
-                  <img className="w-100" height="200" src={e.productimages[0]} alt={e.productname} />
+                <img className="w-100" height="200" src={e.productimages} alt={e.productname} />
                   <h3 style={{ textAlign: 'center', marginTop: '10px' }}>{e.productname}</h3>
                   <p class="card-text">{e.description}</p>
                   <div>PKR: {e.price}/Kg</div>

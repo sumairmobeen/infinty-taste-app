@@ -44,8 +44,7 @@ var adminSchema = new mongoose.Schema({
     "productname": String,
     "email": String,
     "price": Number,
-    "productimages": [],
-    "activeStatus": String,
+    "productimages": String,
     "stock": Number,
     "description": String
 })
@@ -73,5 +72,5 @@ module.exports = {
     userModel: userModel,
     adminModel: adminModel,
     order: order
-   
+
 }
