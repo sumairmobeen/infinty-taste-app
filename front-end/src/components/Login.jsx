@@ -9,11 +9,11 @@ import {
     useHistory
 } from "react-router-dom";
 import { useGlobalState, useGlobalStateUpdate } from './../context/globalContext'
+import url from './BaseUrl'
 
 
 
-
-const url = 'http://localhost:5000'
+// const url = 'http://localhost:5000'
 function Login() {
     const history = useHistory();
 
