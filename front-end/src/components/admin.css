@@ -1,0 +1,138 @@
+/* .f-card {
+    background-color: white;
+    /*height:400px;*/
+    /* width: 502px;
+    border: 1px solid #d0d1d5;
+    border-radius: 3px;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 12px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .30);
+    /* Not original, just a test */
+/* } */
+
+/* .header {
+    margin-bottom: 17px;
+} */
+
+/* .co-logo {
+    /*display:block;*/
+    /* float: left;
+    margin-right: 8px;
+    width: 40px;
+    height: 40px; */
+/* } */ 
+/* .co-name>a {
+    font-family: Helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.38;
+    color: #365899;
+    text-decoration: none;
+    margin-bottom: 2px;
+} */
+
+/* .co-name>a:hover {
+    text-decoration: underline;
+} */ 
+
+/* .time {
+    font-family: Helvetica;
+    font-size: 12px;
+    color: #90949c;
+} */
+
+/* .time>a {
+    color: #90949c;
+    text-decoration: none;
+} */
+
+/* .time>a:hover {
+    text-decoration: underline;
+} */
+
+/* .options {
+    font-family: Helvetica;
+    font-size: 12px;
+    color: #e5e5e5;
+    float: right;
+} */
+
+/* .options:hover {
+    color: black;
+    /* Fallback */
+    /* color: rgba(0, 0, 0, .30); */
+
+
+/* .content {
+    clear: both;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.38;
+} */
+
+/* .reference {
+    width: 476px;
+}
+
+.reference-thumb {
+    display: block;
+    width: 476px;
+    height: 249px;
+} */
+
+/* .box{
+    width: 25%;
+    height: 50%;
+    border: 1px solid black;
+    display: flex;
+}
+.box div {
+    -ms-flex: 1;  /* IE 10 */  
+    /* flex: 1; */
+  /* }
+.productimg{
+    width: 100%;
+} */ 
+.formcenter{
+    width: 100%;
+    padding: 5px;
+    margin-left: 50%;
+}
+
+.file-upload {
+    height: 170px;
+    width: 170px;
+    margin: 40px auto;
+    border: 1px solid #f0c0d0;
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.file-upload input {
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    left: -200px;
+    top: -200px;
+    background: transparent;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+}
+
+.file-upload img {
+    height: 170px;
+    width: 170px;
+
+}
+
+/* .product-show{
+    padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: space-between; */
+  /* flex-direction: column */
