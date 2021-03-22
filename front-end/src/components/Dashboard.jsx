@@ -30,13 +30,12 @@ function Dashboard() {
       url: url + '/getProducts',
       withCredentials: true
     }).then((response) => {
-
       setProducts(response.data.products)
     }).catch((err) => {
       console.log(err)
     })
   }, [])
-  console.log("produt: ", produt)
+  console.log("produt: ====== ya mera han", produt)
   function aDD(e, index) {
     console.log('index', index);
     console.log("cart is ", e);
@@ -81,12 +80,13 @@ function Dashboard() {
           <h1 className="text-center mt-1">Products</h1>
           <div className="row">
             {produt.map((e, index) => (
+
               <div className="col-md-3 mt-3" key={index}>
                 <div style={{ textAlign: 'center' }}>
                   <img className="w-100" height="200" src={e.productimages[0]} alt={e.productname} />
                   <h3 style={{ textAlign: 'center', marginTop: '10px' }}>{e.productname}</h3>
                   <p class="card-text">{e.description}</p>
-                  <div>PKR: {e.price}/-Per kg</div>
+                  <div>PKR: {e.price}/Kg</div>
                   {/* <div> */}
                   <button className="btn btn-primary" onClick={() => { aDD(e) }}>Add To Cart</button>
 

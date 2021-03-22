@@ -22,7 +22,7 @@ import Checkout from './components/Checkoutform';
 import Basket from './components/Basket';
 import Myorders from './components/Myorders';
 import AdminHistory from './components/AdminHistory'
-
+import picture from './images/logo.png'
 
 
 function App() {
@@ -32,9 +32,14 @@ function App() {
     <>
       <nav className="sticky-top">
         <Navbar bg="dark" variant="dark" >
+
+         <img src={picture}  width="80px" height="50px"/>                   
           {(globalState.role === 'admin') ?
             <>
               <Nav className="mr-auto">
+                
+              
+                
                 <Nav.Link><Link to="/">Admin Dashboard</Link></Nav.Link>
 
                 <Nav.Link><Link to="/addproducts">Add Product</Link></Nav.Link>

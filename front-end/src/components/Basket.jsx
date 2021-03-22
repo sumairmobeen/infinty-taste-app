@@ -112,14 +112,14 @@ export default function Basket() {
                                                                 <button class="plus increase" onClick={() => increment(index)}>+</button>
                                                             </div>
                                                             <small id="passwordHelpBlock" class="form-text text-muted text-center">
-                                                                (Note, 1 piece)
+                                                               
                                                             </small>
                                                         </div>
                                                     </div>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div>
                                                             <a href type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                                                                class="fas fa-trash-alt mr-1"></i><span onClick={(e) => deleteFromCart(index)}>Remove item</span> </a>
+                                                                class="fas fa-trash-alt mr-1"></i><span onClick={(e) => deleteFromCart(index)}>Delete item</span> </a>
                                                         </div>
                                                         <p class="mb-0"><span><strong id="summary">{e.price * e.qty}</strong></span></p>
                                                     </div>
@@ -147,7 +147,7 @@ export default function Basket() {
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Temporary amount
-                                <span>$25.98</span>
+                                <span>RS:300</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                                     Shipping

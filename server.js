@@ -21,7 +21,7 @@ var app = express();
 var server = http.createServer(app);
 
 
-const storage = multer.diskStorage({ 
+const storage = multer.diskStorage({
     destination: './uploads/',
     filename: function (req, file, cb) {
         cb(null, `${new Date().getTime()}-${file.filename}.${file.mimetype.split("/")[1]}`)
@@ -48,7 +48,7 @@ var SERVICE_ACCOUNT = {
 
 admin.initializeApp({
     credential: admin.credential.cert(SERVICE_ACCOUNT),
-    DATABASE_URL: "https://infinity-taste-default-rtdb.firebaseio.com/"
+    DATABASE_URL: "https://infinity-taste-default-rtdb.firebaseio.com"
 });
 
 
@@ -140,34 +140,34 @@ app.get("/profile", (req, res, next) => {
     });
 })
 
-app.post("/upload", upload.any(), (req, res, next) => {  
+app.post("/upload", upload.any(), (req, res, next) => {
 
     console.log("req.body: ", req.body);
     console.log("req.body: ", JSON.parse(req.body.myDetails));
     console.log("req.files: ", req.files);
 
-    console.log("uploaded file name: ", req.files[0].originalname);
+    console.log("uploaded file name: ", req.files[0]);
     console.log("file type: ", req.files[0].mimetype);
     console.log("file name in server folders: ", req.files[0].filename);
     console.log("file path in server folders: ", req.files[0].path);
 
-     
 
 
-   
+
+
     bucket.upload(
         req.files[0].path,
-        
+
         function (err, file, apiResponse) {
             if (!err) {
-               
+
                 file.getSignedUrl({
                     action: 'read',
-                    expires: '03-09-2491'
+                    expires: '18-12-2577'
                 }).then((urlData, err) => {
                     if (!err) {
-                        console.log("public downloadable url: ", urlData[0])  
-                        
+                        console.log("public downloadable url: ", urlData[0])
+
                         console.log("===================>", urlData[0]);
 
                         res.send({
@@ -175,15 +175,15 @@ app.post("/upload", upload.any(), (req, res, next) => {
                             status: 200,
                             url: urlData[0]
                         });
-                        
+
                         try {
                             fs.unlinkSync(req.files[0].path)
-                            
+
                             return;
                         } catch (err) {
                             console.error(err)
                         }
-                        
+
                     }
                 })
             } else {
@@ -192,7 +192,6 @@ app.post("/upload", upload.any(), (req, res, next) => {
             }
         });
 })
-
 
 app.post('/admindashboard', (req, res, next) => {
     if (!req.body.productname || !req.body.price || !req.body.productimages || !req.body.activeStatus || !req.body.stock || !req.body.description) {
@@ -204,31 +203,6 @@ app.post('/admindashboard', (req, res, next) => {
     userModel.findById(req.body.jToken.id, 'email role', function (err, user) {
         if (!err) {
             if (user.role === "admin") {
-                // var admindata = new adminModel({
-                //     "productname": req.body.productname,
-                //     "email": user.email,
-                //     "price": req.body.price,
-                //     "productimages": req.body.productimages,
-                //     "activeStatus": req.body.activeStatus,
-                //     "stock": req.body.stock,
-                //     "description": req.body.description
-                // })
-                // admindata.save((err, data) => {
-                //     if (!err) {
-                //         res.send({
-                //             message: "Product Add",
-                //             status: 200,
-                //             data: data
-                //         });
-                //     }
-                //     else {
-                //         console.log(err);
-                //         res.send({
-                //             message: "User Create Error " + JSON.stringify(err),
-                //             status: 500
-                //         });
-                //     }
-                // });
                 adminModel.create({
                     "productname": req.body.productname,
                     "email": user.email,

@@ -33,8 +33,6 @@ export default function AddProduct() {
 
 
 
-
-
     function handlsubmit(event) {
         event.preventDefault();
         axios({
@@ -92,7 +90,7 @@ export default function AddProduct() {
 
         formData.append("myFile", fileInput.files[0]); // file input is for browser only, use fs to read file in nodejs client
         // formData.append("myFile", blob, "myFileNameAbc"); // you can also send file in Blob form (but you really dont need to covert a File into blob since it is Actually same, Blob is just a new implementation and nothing else, and most of the time (as of january 2021) when someone function says I accept Blob it means File or Blob) see: https://stackoverflow.com/questions/33855167/convert-data-file-to-blob
-        formData.append("myName", "mobeen"); // this is how you add some text data along with file
+        formData.append("myName", "sameer"); // this is how you add some text data along with file
         formData.append("myDetails",
             JSON.stringify({
                 "subject": "Science",   // this is how you send a json object along with file, you need to stringify (ofcourse you need to parse it back to JSON on server) your json Object since append method only allows either USVString or Blob(File is subclass of blob so File is also allowed)
@@ -144,18 +142,19 @@ export default function AddProduct() {
                 <MDBRow>
                     <MDBCol md="6">
                         <form onSubmit={handlsubmit} className='formcenter'>
-                            <p className="h4 text-center mb-4">Product Add</p>
+                            <p className="h4 text-center mb-4">ADMIN DASHBOARD</p>
+                            <p className="h4 text-center mb-4" style={{ color: 'blue' }}>ADD ITEM</p>
                             <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-                                Product Name
+                                Item Name
                         </label>
                             <input type="text" ref={productname} className="form-control" placeholder="Product Name" required />
 
                             <label htmlFor="defaultFormLoginPasswordEx" className="black-text">
-                                Product Price
+                                Item Price
                         </label>
                             <input type="number" className="form-control" ref={price} placeholder="Product Price" required />
                             <label htmlFor="defaultFormLoginPasswordEx" className="black-text">
-                                Product Stock
+                                Stock Postion
                         </label>
                             <input type="text" className="form-control" ref={stock} placeholder="Product Stock" required />
                             <br />
@@ -167,12 +166,12 @@ export default function AddProduct() {
                                 <option value="false">False</option>
                             </select>
                             <br />
-                            <label htmlFor="defaultFormLoginPasswordEx" className="black-text">
-                                Product Images
+                            <label htmlFor="defaultFormLoginPasswordEx" className="sblack-text">
+                                Item Images
                         </label>
                             <div className="row justify-content align-items-lg-start d-flex" required>
                                 {images.map((eachImage, index) => (
-                                    <div className='col-4' key={index}>
+                                    <div className='col-4' style={{ textAlign: 'center' }} key={index}>
                                         <form onSubmit={check} required>
                                             <div className="file-upload" key={index}>
                                                 <img src={eachImage} alt="FallBack" id="show_pic" required ref={imgref} />;
@@ -214,7 +213,7 @@ export default function AddProduct() {
                                                 <div class="col-md-8">
                                                     <div class="card-body">
                                                         <h5 class="card-title">Product Name : {e.productname}</h5>
-                                                        <h6 class="card-title">Product Price : {e.price + "$"}</h6>
+                                                        <h6 class="card-title">Product Price : {e.price + "RS"}</h6>
                                                         <h6 class="card-title">Stock : {e.stock}</h6>
 
                                                         <p class="card-text">

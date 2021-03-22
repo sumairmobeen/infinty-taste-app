@@ -1,7 +1,8 @@
 body{
     text-align: center;
 font-size: 20px;
-color: rgb(0, 236, 253);
+color: rgb(30, 253, 0);
+background-color: aquamarine;
 
 background: linear-gradient(to right, #0a0a0a, #fd3f3f, #070707);}
 

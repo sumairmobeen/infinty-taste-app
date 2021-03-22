@@ -38,11 +38,11 @@ export default function Myorders() {
     return (
         <MDBContainer>
             <MDBRow>
-                <h1 style={{ textAlign: 'center' }}>My Orders</h1>
+                <h1 style={{ textAlign: 'center' }}>Order Detail</h1>
                 < MDBTable striped >
                     <MDBTableHead>
-                        <tr>
-                            <th>User ID</th>
+                        <tr >
+                            <th style={{color: 'white'}}>User ID</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone Number</th>
@@ -55,7 +55,7 @@ export default function Myorders() {
                     <MDBTableBody>
                         {getdata.map((e, i) => (
                             <tr key={i}>
-                                <th>{e._id}</th>
+                                <th >{e._id}</th>
                                 <td>{e.name}</td>
                                 <td>{e.email}</td>
                                 <td>{e.phonenumber}</td>
