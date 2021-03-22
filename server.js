@@ -32,8 +32,7 @@ var upload = multer({ storage: storage })
 
 
 
-var SERVICE_ACCOUNT =
-{
+var SERVICE_ACCOUNT = {
     "type": "service_account",
     "project_id": "infinity-taste",
     "private_key_id": "7cb03068179121c1063d27513ac3b0c328dcea34",
@@ -63,7 +62,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', "https://infinity-taste.herokuapp.com"],
     credentials: true
 }));
 
